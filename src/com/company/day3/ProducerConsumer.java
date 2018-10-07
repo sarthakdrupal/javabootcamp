@@ -38,18 +38,18 @@ public class ProducerConsumer {
     }
 
     public static void main(String[] args) {
-        ProducerConsumer producerConsumer = new ProducerConsumer(10);
-        Thread t1 = new Thread(new Producer(producerConsumer));
-        Thread t2 = new Thread(new Consumer(producerConsumer));
+        ProducerConsumerBlockingQueue producerConsumer = new ProducerConsumerBlockingQueue(10);
+        Thread t1 = new Thread(new Producer1(producerConsumer));
+        Thread t2 = new Thread(new Consumer1(producerConsumer));
         t1.start();
         t2.start();
     }
 }
 
 class Producer implements Runnable {
-    ProducerConsumer producerConsumer;
+    ProducerConsumerBlockingQueue producerConsumer;
 
-    Producer(ProducerConsumer producerConsumer) {
+    Producer(ProducerConsumerBlockingQueue producerConsumer) {
         this.producerConsumer = producerConsumer;
     }
 
@@ -69,9 +69,9 @@ class Producer implements Runnable {
 }
 
 class Consumer implements Runnable {
-    ProducerConsumer producerConsumer;
+    ProducerConsumerBlockingQueue producerConsumer;
 
-    Consumer(ProducerConsumer producerConsumer) {
+    Consumer(ProducerConsumerBlockingQueue producerConsumer) {
         this.producerConsumer = producerConsumer;
     }
 
